@@ -63,11 +63,41 @@ YandexGame.RewVideoShow(0);
 
 ### – 3 Практическая работа «Показ видеорекламы пользователю за вознаграждение»
 Ход работы:
+1) Реализуем показ рекламы за вознаграждение. Создадим и напишем новый скрипт и подключим его к YandexManager, этот скрипт будет отвечать за показ рекламы за вознограждение.
 
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using YG;
 
+public class ADReward : MonoBehaviour
+{
+    private void OnEnable() => YandexGame.CloseVideoEvent += Rewarded;
+    private void OnDisable() => YandexGame.CloseVideoEvent += Rewarded;
 
+    void Rewarded(int id)
+    {
+        if(id == 1)
+        {
+            Debug.Log("Пользователь получил награду");
+        }
+        else
+        {
+            Debug.Log("Пользователь остался без награды");
+        }
+    }
+    
+    public void OpenAD()
+    {
+        YandexGame.RewVideoShow(Random.Range(0,2));
+    }
+}
+```
 
+2) Создадим и настроим кнопку, чтоб пользователь мог при нажатии на нее посмотреть рекламу за вознограждение.
 
+3)
 
 ### – 4 Практическая работа «Создание внутриигрового магазина»
 Ход работы:
