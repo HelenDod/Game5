@@ -118,10 +118,27 @@ public class ADReward : MonoBehaviour
 ## Задание 2
 ### Добавить в приложение интерфейс для вывода статуса наличия игрока в сети (онлайн или офлайн).
 Ход работы:
+1) Напишем код в скрипт CheckConnectYG
 
+```
+[SerializeField] private TextMeshProUGUI userStatusOnOff;
 
+public void CheckSDK()
+{
+    if (YandexGame.auth)
+    {
+        userStatusOnOff.text = "Online";
+        Debug.Log("User authorization ok");
+    }
+    else
+    {
+        Debug.Log("User not authorization");
+        YandexGame.AuthDialog();
+    }
+}
+```
 
-
+2) Создадим текст и подключим к нему код выше через Yandex Manager. В итоге у нас будет меняться текст при подключении с Offline на Online.
 
 
 ## Задание 3
